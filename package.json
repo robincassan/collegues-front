@@ -3,7 +3,7 @@
   "version": "0.0.0",
     
   "scripts": {
-    "build": "ng build --prod --base-href https://NOM_UTILISATEUR.github.io/collegues-front/",
+    "build": "ng build --prod --base-href https://robincassan.github.io/collegues-front/",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
