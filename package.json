@@ -1,7 +1,6 @@
 {
   "name": "collegues-front",
   "version": "0.0.0",
-    
   "scripts": {
     "build": "ng build --prod --base-href https://robincassan.github.io/collegues-front/",
     "ng": "ng",
@@ -20,6 +19,7 @@
     "@angular/platform-browser": "~8.1.1",
     "@angular/platform-browser-dynamic": "~8.1.1",
     "@angular/router": "~8.1.1",
+    "bootstrap": "^4.3.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
