@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { col } from './mock/collegues.mock';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,9 @@ import { col } from './mock/collegues.mock';
 })
 export class AppComponent {
   title = 'collegues-front';
-  unCollegue = col;
+  unCollegue;
+
+  constructor(private dataService: DataService) {
+    this.unCollegue = this.dataService.recupererCollegueCourant();
+  }
 }
