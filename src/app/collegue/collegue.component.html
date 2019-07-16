@@ -1,29 +1,40 @@
-<div class='row'>  
+<div class='row'>
 
-    <div class = 'col-md-4'>
-        <img src="http://3.bp.blogspot.com/-cUFzRnZPo_k/US9fPS1y5OI/AAAAAAAAGBc/RnP83Vb1PRI/s1600/Grenouille+verte+1.jpg" class="img-fluide" alt="photo de grenouille">
+    <div class='col-4'>
+        <img src= "{{col.photoUrl}}"
+       
+            class="img-fluid" alt="photo de grenouille">
 
     </div>
-    <div class = 'col-md-8 row'> 
-<div class = 'col-md-6'>
-<p>
-Matricule
-<br>
-Nom
-<br>
-Prenoms
-<br>
-Date de naissance
-<br>
-Email
-<br>    
+    <div class='col-8 row'>
+        <div class='col-md-6'>
+            <p>
+                Matricule {{col.matricule}}
+                <br>
+                Nom         {{col.nom}}
+                <br>
+                Prenoms     {{col.prenom}}
+                <br>
+                Date de naissance           {{col.dateDeNaissance}}
+                <br>
+                Email       {{col.email}}
+                <br>
 
 
-</p>
+            </p>
+        </div>
+        <div class='col-md-6'>
+
+        </div>
+
+    </div>
 </div>
-<div class = 'col-md-6'>
-<button>Modifier</button>
-</div>
 
+<div class='row '>
+    <div class="col offset-4">
+        <a href="#" (click)="creationcollegue()">  Créer un nouveau collègue</a>
+    </div>
+    <div class="col">
+        <button class="btn btn-primary" (click)="modificationcollegue()" type="submit">Modifier</button>
     </div>
 </div>
