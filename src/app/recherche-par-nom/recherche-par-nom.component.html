@@ -3,11 +3,10 @@
         <form class="form-inline">
             <div class="form-group">
                 <label for="inputPassword6"> Recherche par nom </label>
-                <input type="password" id="inputPassword6" class="form-control mx-sm-3"
-                    aria-describedby="passwordHelpInline">
+                <input type="text" id="inputPassword6" class="form-control mx-sm-3"
+                    aria-describedby="passwordHelpInline" #saisieNom>
                 <small id="passwordHelpInline" class="text-muted">
-                    <button class="btn btn-primary" (click)="rechercher()"
-                        type="submit">Rechercher</button>
+                    <button type="button" class="btn btn-primary" (click)="rechercher(saisieNom.value); ">Rechercher</button>
                 </small>
             </div>
         </form>
@@ -15,8 +14,8 @@
     <div class="row">
         <div class="col">
             <ul>
-                <li *ngFor="let m of matricules">
-                    {{m}}
+                <li *ngFor="let m of matricules"  >
+                    <button (click)= "afficherinfos(m);" > {{m}} </button>
                 </li>
             </ul>
         </div>

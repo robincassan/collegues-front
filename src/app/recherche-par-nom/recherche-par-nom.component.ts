@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { col } from '../mock/collegues.mock';
 import { DataService } from '../services/data.service';
+import { Collegue } from '../models/Collegue';
 
 @Component({
   selector: 'app-recherche-par-nom',
@@ -14,8 +15,12 @@ export class RechercheParNomComponent implements OnInit {
 
   ngOnInit() {
   }
-  rechercher(){
-    this.matricules = this.dataService.rechercherParNom('');
+  rechercher(nomSaisi: string){
+   this.dataService.rechercherParNom(nomSaisi).subscribe(tableaumatriculerecupere => this.matricules = tableaumatriculerecupere);
+  }
+  afficherinfos(m:string){
+    this.dataService.publier(m) // faire un post à la place du log
+    
   }
 
 }

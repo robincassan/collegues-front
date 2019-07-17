@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
+import {Observable, Subject, interval} from 'rxjs';
+import { DataService } from '../services/data.service';
+
 
 
 @Component({
@@ -8,11 +11,18 @@ import { Collegue } from '../models/Collegue';
   styleUrls: ['./collegue.component.css']
 })
 export class CollegueComponent implements OnInit {
-@Input() col: Collegue;
+ // supression  de @Input() 
+ col: Collegue;
 modeEdit:boolean = false; 
-  constructor() { }
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    // s'abonner au sujet voir l'exemple de Rossi 
+    this.dataService.sabonner()
+    .subscribe(collegueSelectionne =>  {
+      this.col = collegueSelectionne;
+    })
   }
 
   modifier(){
