@@ -1,0 +1,54 @@
+<!-- à afficher en conditionnel si mode create est true-->
+<section>
+
+        <div class="form-group row">
+                <label for="inputPassword3" class="col-4 col-form-label"> Nom </label>
+                <div class="col-8">
+                  <input type="texte" class="form-control" id="inputPassword3" placeholder="Nom" name="nom" required minlength="1" maxlength="120" size="20"
+                  [(ngModel)]="saisieEdit.nom"  #inputNom="ngModel">
+                  <p *ngIf="inputNom.dirty && inputNom.invalid"> Nom invalide! </p>
+                </div>
+              </div>
+              <div class="form-group row">
+                    <label for="inputPassword3" class="col-4 col-form-label"> Prénoms </label>
+                    <div class="col-8">
+                      <input type="texte" class="form-control" id="inputPassword3" placeholder="Prénoms" name="prenom" required minlength="1" maxlength="120" size="20"
+                      [(ngModel)]="saisieEdit.prenom"  #inputPrenoms="ngModel">
+                      <p *ngIf="inputPrenoms.dirty && inputPrenoms.invalid"> Achtung! Prénoms invalide </p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                        <label for="inputPassword3" class="col-4 col-form-label">Date de naissance</label>
+                        <div class="col-8">
+                          <input type="texte" class="form-control" id="inputPassword3" placeholder="Date de naissance" name="DateDeNaissance" required minlength="3" maxlength="120" size="20"
+                          [(ngModel)]="saisieEdit.DateDeNaissance"  #inputDateDeNaissance="ngModel">
+                          <p *ngIf="inputDateDeNaissance.dirty && inputDateDeNaissance.invalid"> Achtung! DateDeNaissance non valide </p>
+                        </div>
+                      </div>
+
+        <div class="form-group row">
+                <label for="inputEmail3" class="col-4 col-form-label">Email</label>
+                <div class="col-8">
+                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" required minlength="7" maxlength="80" size="20"
+                  [(ngModel)]="saisieEdit.email" #inputEmail="ngModel">
+                  <p *ngIf="inputEmail.dirty && inputEmail.invalid"> attention email invalide</p>
+
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword3" class="col-4 col-form-label">Photo URL</label>
+                <div class="col-8">
+                  <input type="texte" class="form-control" id="inputPassword3" placeholder="Photo URL" name="photoUrl" required minlength="7" maxlength="120" size="20"
+                  [(ngModel)]="saisieEdit.photoUrl"  #inputPhotoURL="ngModel">
+                  <p *ngIf="inputPhotoURL.dirty && inputPhotoURL.invalid"> Achtung! ungültige photoURL </p>
+                </div>
+              </div>
+ 
+
+   
+   
+
+    <button class="btn btn-primary float-right" (click)="valider()" type="submit"
+        [disabled]="inputEmail.invalid || inputPhotoURL.invalid || inputDateDeNaissance.invalid || inputPrenoms.invalid || inputNom.invalid"  (click)="modifCollegue()" >Valider</button>
+
+</section>

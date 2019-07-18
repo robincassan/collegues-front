@@ -8,7 +8,7 @@
             </div>
             <div class='col-8'>
 
-                Matricule {{col.matricule}}
+                <ng-container *ngIf="!modeCreate"  > Matricule {{col.matricule}} </ng-container>
                 <br>
                 Nom {{col.nom | uppercase }}
                 <br>
@@ -16,7 +16,7 @@
                 <br>
                 Date de naissance {{ col.dateDeNaissance | date:'longDate' }}
                 <br>
-                <ng-container *ngIf="!modeEdit">Email  {{col.email}}</ng-container>
+                <ng-container *ngIf="!modeEdit"> Email  {{col.email}}</ng-container>
                 <br>
                 <!-- à afficher en conditionnel si mode edit est true-->
                 <section *ngIf="modeEdit">

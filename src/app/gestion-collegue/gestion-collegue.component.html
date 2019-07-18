@@ -1,0 +1,7 @@
+<div *ngIf="modeAffichageCollegue;else creerCollegue">
+        <app-collegue (modecreer)="traiterEvtCreer()"></app-collegue>
+</div>
+<ng-template #creerCollegue>
+        <app-create-collegue></app-create-collegue>
+</ng-template>
+
