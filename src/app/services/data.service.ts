@@ -47,5 +47,8 @@ export class DataService {
     return this.httpClient.get <Collegue> (`${environment.backendUrl}/collegues/${matricule}`);
 
   }
+  modifCollegue(matricule:string, saisieEdit: any): Observable <Collegue> {
+    return this.httpClient.patch <Collegue> (`${environment.backendUrl}/collegues/${matricule}`, saisieEdit);
+  }
 
 }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CollegueComponent } from './collegue/collegue.component';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     NgbModule,
+    FormsModule, 
     HttpClientModule
   ],
   providers: [],

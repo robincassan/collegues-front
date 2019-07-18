@@ -1,50 +1,69 @@
-<div class="container-fluid">
-    <div class='row'>
+<form>
+    <div class="container-fluid">
+        <div class='row'>
 
-        <div class='col-4'>
-            <img src="{{col.photoUrl}}" class="img-fluid" alt="photo de grenouille">
+            <div class='col-4'>
+                <img src="{{col.photoUrl}}" class="img-fluid" alt="photo de grenouille">
 
-        </div>
-        <div class='col-8 row'>
-            <div class='col-md-6'>
+            </div>
+            <div class='col-8'>
 
                 Matricule {{col.matricule}}
                 <br>
                 Nom {{col.nom | uppercase }}
                 <br>
-                Prenoms {{col.prenom}}
+                Prenoms {{col.prenoms}}
                 <br>
                 Date de naissance {{ col.dateDeNaissance | date:'longDate' }}
                 <br>
-                Email <ng-container *ngIf="!modeEdit">{{col.email}}</ng-container>
-                <!-- à afficher en conditionnel si mode edit est true-->
-
-                <input *ngIf="modeEdit" type="text" id="email" name="email" required minlength="4" maxlength="80"
-                    size="20">
-
+                <ng-container *ngIf="!modeEdit">Email  {{col.email}}</ng-container>
                 <br>
                 <!-- à afficher en conditionnel si mode edit est true-->
-                <ng-container *ngIf="modeEdit">photoUrl </ng-container>
-                <input *ngIf="modeEdit" type="text" id="photoUrl" name="photoUrl" required minlength="4" maxlength="120"
-                    size="20">
+                <section *ngIf="modeEdit">
+
+                        <div class="form-group row">
+                                <label for="inputEmail3" class="col-4 col-form-label">Email</label>
+                                <div class="col-8">
+                                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" required minlength="7" maxlength="80" size="20"
+                                  [(ngModel)]="saisieEdit.email" #inputEmail="ngModel">
+                                  <p *ngIf="inputEmail.dirty && inputEmail.invalid"> attention email invalide</p>
+        
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputPassword3" class="col-4 col-form-label">Photo URL</label>
+                                <div class="col-8">
+                                  <input type="texte" class="form-control" id="inputPassword3" placeholder="Photo URL" name="photoUrl" required minlength="7" maxlength="120" size="20"
+                                  [(ngModel)]="saisieEdit.photoUrl"  #inputPhotoURL="ngModel">
+                                  <p *ngIf="inputPhotoURL.dirty && inputPhotoURL.invalid"> Achtung! ungültige photoURL </p>
+                                </div>
+                              </div>
+                 
+
+                   
+                   
+
+                    <button class="btn btn-primary float-right" (click)="valider()" type="submit"
+                        [disabled]="inputEmail.invalid || inputPhotoURL.invalid"  (click)="modifCollegue()" >Valider</button>
+
+                </section>
 
 
 
             </div>
-            <div class='col-md-6'>
+        </div>
+
+        <div class='row '>
+            <div class="col offset-4">
+                <a *ngIf="!modeEdit" href="#" (click)="creationcollegue()"> Créer un nouveau collègue</a>
+            </div>
+            <div class="col">
+                <button *ngIf="!modeEdit" class="btn btn-primary" (click)="modifier()" type="submit">Modifier</button>
+
+
+
 
             </div>
-
         </div>
     </div>
-
-    <div class='row '>
-        <div class="col offset-4">
-            <a *ngIf="!modeEdit" href="#" (click)="creationcollegue()"> Créer un nouveau collègue</a>
-        </div>
-        <div class="col">
-            <button *ngIf="!modeEdit" class="btn btn-primary" (click)="modifier()" type="submit">Modifier</button>
-            <button *ngIf="modeEdit" class="btn btn-primary" (click)="valider()" type="submit">Valider</button>
-        </div>
-    </div>
-</div>
+</form>

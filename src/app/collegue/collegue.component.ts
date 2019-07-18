@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Collegue } from '../models/Collegue';
-import {Observable, Subject, interval} from 'rxjs';
+import {Observable, Subject, interval, Subscription} from 'rxjs';
 import { DataService } from '../services/data.service';
 
 
@@ -10,10 +10,14 @@ import { DataService } from '../services/data.service';
   templateUrl: './collegue.component.html',
   styleUrls: ['./collegue.component.css']
 })
-export class CollegueComponent implements OnInit {
+
+export class CollegueComponent implements OnInit, OnDestroy {
  // supression  de @Input() 
  col: Collegue;
 modeEdit:boolean = false; 
+actionSub: Subscription
+
+saisieEdit:any = {};
 
   constructor(private dataService: DataService) { }
 
@@ -32,8 +36,18 @@ modeEdit:boolean = false;
 
   valider() {
     this.modeEdit = false;
+    console.log(this.saisieEdit);
   }
   creationcollegue(){
     console.log('Creation d\'un nouveau collegue');
   }
+  ngOnDestroy(){
+    // désabonnement du composant avant sa destruction
+
+    this.actionSub.unsubscribe();
+  }
+  modifCollegue() {
+    return this.dataService.modifCollegue(this.col.matricule, this.saisieEdit).subscribe()
+  }
+  
 }
